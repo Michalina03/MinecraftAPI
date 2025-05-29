@@ -1,0 +1,13 @@
+@import './variables';
+@import './mixins';
+@import './font';
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: $font-main;
+  background-color: $color-gwhite;
+  color: $color-white;
+  margin: 0;
+  padding: 0;
+}

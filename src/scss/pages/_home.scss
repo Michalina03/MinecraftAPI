@@ -1,0 +1,93 @@
+@import '../variables';
+@import '../mixins';
+
+.home {
+  font-family: $font-main;
+
+  &__section {
+    @include section-layout;
+    background-color: $section-bg-darkened;
+    border-top: 1px solid $section-divider-color;
+    border-bottom: 1px solid $section-divider-color;
+
+    &:nth-child(even) {
+      background-color:$color-white ; 
+    }
+
+    &--intro {
+  min-height: calc(100vh - 170px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: $spacing-md;
+  background: $intro-bg;
+  color: $text-color-light;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+
+  .home__title {
+    font-size: 2.2rem; 
+    margin-bottom: $spacing-sm;
+    text-shadow: 1px 1px 0 #000;
+    z-index: 1;
+    color:$color-green;
+    @include fade-in;
+  }
+
+  .home__text {
+    font-size: 0.89rem; 
+    max-width: 560px;
+    margin: 0 auto;
+    background-color: $section-text-bg;
+    padding: $spacing-sm;
+    border-radius: $text-border-radius;
+    box-shadow: $text-box-shadow;
+    z-index: 1;
+    @include responsive-text;
+  }
+}
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-md;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+
+    @include responsive-col;
+  }
+
+  &__image {
+    max-width: $image-large;
+    max-height: 300px;
+    object-fit: cover;
+    @include pixel-border;
+    @include responsive-card;
+  }
+
+  &__textBox {
+    background-color: $section-text-bg;
+    color: $section-text-color;
+    padding: $spacing-md;
+    border-radius: $text-border-radius;
+    box-shadow: $text-box-shadow;
+    font-size: $font-size-base;
+    line-height: 1.4;
+    max-width: 600px;
+    @include responsive-text;
+  }
+
+  &__title {
+    font-size: $font-size-large;
+    margin-bottom: $spacing-sm;
+    letter-spacing: $letter-spacing-wide;
+  }
+
+  &__text {
+    font-size: $font-size-base;
+  }
+}

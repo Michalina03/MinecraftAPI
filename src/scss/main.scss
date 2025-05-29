@@ -1,0 +1,10 @@
+@import "./reset";
+@import "./body";
+@import "./variables";
+@import "./mixins";
+// ----------------------------------
+@import "./components/header";
+@import "./pages/home";
+@import "./pages/podstrony";
+@import "./pages/game";
+@import "./components/footer";
