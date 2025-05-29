@@ -43,7 +43,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <Navigation />
       <Routes>
-        <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
         <Route path="/mobs" element={<Mobs />} />
         <Route path="/blocks" element={<Blocks />} />
