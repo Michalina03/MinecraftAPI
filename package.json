@@ -4,14 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "homepage": "https://Michalina03.github.io/MinecraftAPI",
-
-
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
-
   },
   "dependencies": {
     "react": "^18.3.1",
