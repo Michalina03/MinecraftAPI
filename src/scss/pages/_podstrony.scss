@@ -1,0 +1,117 @@
+@import '../variables';
+@import '../mixins';
+
+.page__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-lg;
+  justify-content: center;
+  padding: $spacing-xl;
+  height:100%;
+}
+button {
+  background-color: $color-green;
+  color: $color-white;
+  border: none;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $radius-md;
+  font-family: $font-main;
+  font-size: $font-size-base;
+  cursor: pointer;
+  transition: $transition-default;
+  box-shadow: $card-box-shadow;
+  user-select: none;
+  margin-top: $spacing-md;
+
+  &:hover {
+    background-color: darken($color-green, 10%);
+    box-shadow: $card-box-shadow-hover;
+  }
+
+  &:focus {
+    outline: 2px solid $color-pink;
+    outline-offset: 2px;
+  }
+
+  @include responsive-text;
+}
+
+.loader {
+  font-family: $font-main;
+  font-size: $font-size-base;
+  color: $color-green;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin: $spacing-xl 0;
+  user-select: none;
+  height: 260px;
+
+  &::before {
+    content: '';
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 3px solid $color-green;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.item,
+.block,
+.mob {
+  background-color: $color-gwhite;
+  border: $border-width-thin solid $color-gray;
+  border-radius: $card-border-radius;
+  box-shadow: $card-box-shadow;
+  max-width: $card-max-width;
+  width: 100%;
+  padding: $card-padding;
+  font-family: $font-main;
+  transition: $transition-default;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  min-height: 380px; 
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $card-box-shadow-hover;
+  }
+
+  &__title {
+    font-size: $font-size-card-title;
+    margin-bottom: $spacing-sm;
+    color: $color-green;
+    text-align: center;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+
+  &__field {
+    font-size: $font-size-card-text;
+    margin-bottom: $spacing-xs;
+    color: $color-gray;
+
+    strong {
+      color: $color-pink;
+    }
+  }
+
+  &__image {
+    margin-top: auto;
+    width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+  }
+
+  @include responsive-card;
+}

@@ -1,0 +1,47 @@
+@import '../variables';
+@import '../mixins';
+.header {
+  background-color: $color-green;
+  padding: $spacing-lg $spacing-xl;
+  text-align: center;
+  border-bottom: $border-width-thick solid $color-pink;
+
+  h1 {
+    font-size: $font-size-large;
+    margin: 0;
+    color: $color-white;
+    letter-spacing: $letter-spacing-wide;
+  }
+}
+
+nav {
+  background-color: $color-green;
+  border-top: $border-width-thin solid $color-pink;
+  border-bottom: $border-width-thin solid $color-pink;
+
+  ul {
+    @include flex-center;
+    list-style: none;
+    padding: $spacing-md;
+    margin: 0;
+    gap: $spacing-xl;
+
+    @include responsive-col;
+
+    li a {
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: $font-size-base;
+      padding: $spacing-xs $spacing-sm;
+      border: $border-width-thin solid transparent;
+      transition: $transition-default;
+
+      &:hover {
+        border-color: $color-pink;
+        color: $color-pink;
+        background-color: $color-gray;
+      }
+    }
+  }
+}

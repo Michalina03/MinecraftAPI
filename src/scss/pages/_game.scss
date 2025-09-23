@@ -1,0 +1,109 @@
+@import '../variables';
+@import '../mixins';
+
+.game {
+  @include flex-center;
+  flex-direction: column;
+  gap: $spacing-lg;
+  padding: $spacing-xl;
+  background: $section-bg-alt;
+  font-family: $font-main;
+  min-height: 100vh;
+
+  &__title {
+    font-size: $section-title-size;
+    color: $color-pink;
+    text-shadow: $text-box-shadow;
+    text-align: center;
+    @include responsive-text;
+  }
+
+  &__category {
+    color: $color-green;
+  }
+
+  &__image-wrapper {
+    @include flex-center;
+    background: $color-gwhite;
+    border-radius: $card-border-radius;
+    padding: $spacing-md;
+    box-shadow: $card-box-shadow;
+    height: 150px;
+    width: 150px;
+    @include pixel-border;
+  }
+
+  &__image {
+    height: 120px;
+    width: 120px;
+    image-rendering: $image-rendering;
+
+    @media (max-width: $breakpoint-sm) {
+      max-height: 120px;
+      max-width: 120px;
+    }
+  }
+
+  &__options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: $spacing-md;
+    width: 100%;
+    max-width: 600px;
+    @include responsive-card;
+  }
+
+  &__option-button {
+    padding: $spacing-sm;
+    font-size: $font-size-base;
+    border: $border-pixel;
+    border-radius: $radius-md;
+    background-color: $color-white;
+    color: $text-color-dark;
+    cursor: pointer;
+    transition: $transition-default;
+    font-family: $font-main;
+
+    &:hover {
+      background-color: $color-gwhite;
+      box-shadow: $card-box-shadow-hover;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-sm;
+    @include responsive-col;
+  }
+
+  &__button {
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-base;
+    font-family: $font-main;
+    border-radius: $radius-md;
+    border: none;
+    cursor: pointer;
+    transition: $transition-default;
+
+    &--next {
+      background-color: $color-green;
+      color: $color-white;
+    }
+
+    &--back {
+      background-color: $color-pink;
+      color: $color-white;
+    }
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &__error {
+    color: $color-red;
+    font-size: $font-size-large;
+    text-align: center;
+    padding: $spacing-lg;
+  }
+}
