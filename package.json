@@ -8,9 +8,11 @@
     "dev": "vite",
     "build": "vite build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "fetch-data": "node scripts/fetchData.js"
   },
   "dependencies": {
+    "node-fetch": "^3.3.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.6.1"
