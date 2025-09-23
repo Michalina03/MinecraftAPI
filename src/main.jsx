@@ -40,7 +40,7 @@ function Navigation() {
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Header />
-    <BrowserRouter>
+    <BrowserRouter basename="/MinecraftAPI">
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
