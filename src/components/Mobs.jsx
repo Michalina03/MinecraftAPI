@@ -6,11 +6,36 @@ function Mobs() {
   const [visibleCount, setVisibleCount] = useState(24);
   const [loading, setLoading] = useState(true);
 
+  const imageExists = async (url) => {
+    try {
+      const res = await fetch(url, { method: 'HEAD' });
+      return res.ok;
+    } catch {
+      return false;
+    }
+  };
+
   useEffect(() => {
-    fetch('/data/mobs.json')
-      .then(res => res.json())
-      .then(data => {
-        setMobs(data);
+    fetch('/api/mob')
+      .then((response) => response.json())
+      .then(async (data) => {
+        const identifiers = data.data;
+
+        const detailPromises = identifiers.map(async (id) => {
+          try {
+            const res = await fetch(`/api/mob/${id}`);
+            const result = await res.json();
+            const mob = result.data;
+
+            const validImage = mob.render_image && (await imageExists(mob.render_image));
+            return validImage ? mob : null;
+          } catch {
+            return null;
+          }
+        });
+
+        const detailedMobs = await Promise.all(detailPromises);
+        setMobs(detailedMobs.filter(Boolean));
         setLoading(false);
       })
       .catch((error) => {

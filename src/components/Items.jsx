@@ -6,15 +6,40 @@ function Items() {
   const [visibleCount, setVisibleCount] = useState(24);
   const [loading, setLoading] = useState(true);
 
+  const imageExists = async (url) => {
+    try {
+      const res = await fetch(url, { method: 'HEAD' });
+      return res.ok;
+    } catch {
+      return false;
+    }
+  };
+
   useEffect(() => {
-    fetch('/data/items.json')
-      .then((res) => res.json())
-      .then((data) => {
-        setItems(data);
+    fetch('/api/item')
+      .then((response) => response.json())
+      .then(async (data) => {
+        const identifiers = data.data;
+
+        const detailPromises = identifiers.map(async (id) => {
+          try {
+            const res = await fetch(`/api/item/${id}`);
+            const result = await res.json();
+            const item = result.data;
+
+            const validImage = item.inventory_image && (await imageExists(item.inventory_image));
+            return validImage ? item : null;
+          } catch {
+            return null;
+          }
+        });
+
+        const detailedItems = await Promise.all(detailPromises);
+        setItems(detailedItems.filter(Boolean));
         setLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching items list:", error);
+        console.error("Error fetching item list:", error);
         setLoading(false);
       });
   }, []);
@@ -42,3 +67,4 @@ function Items() {
 }
 
 export default Items;
+

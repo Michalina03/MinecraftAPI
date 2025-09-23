@@ -14,8 +14,8 @@ const Home = () => {
 
       <section className="home__section">
         <div className="home__content">
-          <img src={`${import.meta.env.BASE_URL}img/1.png`} alt="..." />
-          <img src={`${import.meta.env.BASE_URL}img/2.png`} alt="..." />
+          <img src = "/img/1.png" alt="Landscape 1" className="home__image" />
+          <img src="/img/2.png" alt="Landscape 2" className="home__image" />
           <div className="home__textBox">
             <p>
               Minecraft is absolutely beautiful! You can build awesome things, enjoy stunning views, and even go on fun adventures with animals. It’s a world full of wonder and creativity!
